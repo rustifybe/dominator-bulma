@@ -124,6 +124,17 @@ macro_rules! button {
 }
 
 #[macro_export]
+macro_rules! notification {
+    ($($classes:literal,)* { $($methods:tt)* }) => {
+        dominator::html!("div" => web_sys::HtmlDivElement, {
+            .class("notification")
+            $(.class($classes))*
+            $($methods)*
+        })
+    };
+}
+
+#[macro_export]
 macro_rules! content {
     ($($classes:literal,)* { $($methods:tt)* }) => {
         dominator::html!("div" => web_sys::HtmlDivElement, {
